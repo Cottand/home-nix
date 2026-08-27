@@ -20,6 +20,9 @@
   # assumes rosetta
   nix.extraOptions = ''
     extra-platforms = x86_64-darwin aarch64-darwin
+    warn-dirty = false
+    # so that it uses settings set by `attic use`
+    netrc-file = /Users/nico/.config/nix/netrc
   '';
   # starts a VM!
   nix.linux-builder.enable = false;
@@ -28,6 +31,9 @@
   nix.optimise.automatic = false;
   # TODO will work once you bump nix
   nix.settings.experimental-features = lib.mkForce "nix-command flakes pipe-operators";
+
+  nix.settings.substituters = [ "https://attic.tfk.nd/default" ];
+  nix.settings.trusted-public-keys = [ "default:3p2Cnf8PPu95pV5IUq64gTK0nKA8MjEYTvTGWWyNQRI=" ];
 
 
   nixpkgs.hostPlatform = "aarch64-darwin";

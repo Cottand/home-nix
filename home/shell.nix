@@ -1,8 +1,8 @@
 { ... }: {
-
   programs.git = {
+    signing.format = "openpgp";
     enable = true;
-    settings.user.name = "Cottand";
+    settings.user.name = "cottand";
     settings.user.email = "nico.dc@outlook.com";
     settings.alias = {
       ac = "!git add . && git commit -m";
